@@ -1,71 +1,91 @@
-import React, { useState } from 'react';
+import React, { useState, useContext } from 'react';
 import './App.css';
 import Header from './components/Header';
-import Feed from './components/Feed';
+import MainFeed from './components/MainFeed';
 import Sidebar from './components/Sidebar';
+import Stories from './components/Stories';
 import Modal from './components/Modal';
+import UserProfile from './components/UserProfile';
+import Explore from './components/Explore';
+import Messages from './components/Messages';
+import Notifications from './components/Notifications';
+import SavedPosts from './components/SavedPosts';
+import { AppContext } from './context/AppContext';
 
 function App() {
+  const [currentPage, setCurrentPage] = useState('home');
   const [showModal, setShowModal] = useState(false);
-  const [posts, setPosts] = useState([
-    {
-      id: 1,
-      author: 'Sarah Anderson',
-      avatar: 'https://i.pravatar.cc/150?img=1',
-      image: 'https://images.unsplash.com/photo-1495521821757-a1efb6729352?w=600&h=600&fit=crop',
-      caption: 'Beautiful sunset at the beach! 🌅',
-      likes: 1234,
-      comments: 45,
-      liked: false,
-      saved: false,
-      timestamp: '2 hours ago'
-    },
-    {
-      id: 2,
-      author: 'Mike Johnson',
-      avatar: 'https://i.pravatar.cc/150?img=2',
-      image: 'https://images.unsplash.com/photo-1552668473-f5400afad56c?w=600&h=600&fit=crop',
-      caption: 'Coffee and code - the perfect morning 💻☕',
-      likes: 892,
-      comments: 23,
-      liked: false,
-      saved: false,
-      timestamp: '4 hours ago'
-    },
-    {
-      id: 3,
-      author: 'Emma Davis',
-      avatar: 'https://i.pravatar.cc/150?img=3',
-      image: 'https://images.unsplash.com/photo-1506905925346-21bda4d32df4?w=600&h=600&fit=crop',
-      caption: 'Mountain views never get old! 🏔️',
-      likes: 2156,
-      comments: 67,
-      liked: false,
-      saved: false,
-      timestamp: '6 hours ago'
-    }
-  ]);
+  const [showUserProfile, setShowUserProfile] = useState(false);
+  const [selectedUser, setSelectedUser] = useState(null);
+  const [unreadMessages, setUnreadMessages] = useState(3);
+  const [unreadNotifications, setUnreadNotifications] = useState(5);
 
-  const handleLike = (postId) => {
-    setPosts(posts.map(post =>
-      post.id === postId ? { ...post, liked: !post.liked, likes: post.liked ? post.likes - 1 : post.likes + 1 } : post
-    ));
+  const handleCreateClick = () => setShowModal(true);
+  const handleNavigate = (page) => setCurrentPage(page);
+  const handleViewProfile = (user) => {
+    setSelectedUser(user);
+    setShowUserProfile(true);
   };
 
-  const handleSave = (postId) => {
-    setPosts(posts.map(post =>
-      post.id === postId ? { ...post, saved: !post.saved } : post
-    ));
+  const renderContent = () => {
+    switch (currentPage) {
+      case 'home':
+        return (
+          <div className="main-container">
+            <div className="feed-section">
+              <Stories />
+              <MainFeed />
+            </div>
+            <Sidebar />
+          </div>
+        );
+      case 'explore':
+        return <Explore />;
+      case 'messages':
+        return <Messages />;
+      case 'notifications':
+        return <Notifications />;
+      case 'saved':
+        return <SavedPosts />;
+      case 'profile':
+        return (
+          <UserProfile 
+            user={{
+              username: 'james_aicha',
+              fullName: 'James Aicha',
+              bio: '📸 Photography enthusiast | 🌍 Traveler | 💻 Developer',
+              avatar: 'https://i.pravatar.cc/300?img=0',
+              followers: 1250,
+              following: 342,
+              posts: 145,
+              verified: true
+            }}
+          />
+        );
+      default:
+        return null;
+    }
   };
 
   return (
     <div className="app">
-      <Header onCreateClick={() => setShowModal(true)} />
-      <div className="app-body">
-        <Feed posts={posts} onLike={handleLike} onSave={handleSave} />
-        <Sidebar />
+      <Header 
+        onCreateClick={handleCreateClick}
+        onNavigate={handleNavigate}
+        currentPage={currentPage}
+        unreadMessages={unreadMessages}
+        unreadNotifications={unreadNotifications}
+      />
+      <div className="app-content">
+        {renderContent()}
       </div>
       {showModal && <Modal onClose={() => setShowModal(false)} />}
+      {showUserProfile && (
+        <UserProfile 
+          user={selectedUser} 
+          onClose={() => setShowUserProfile(false)}
+        />
+      )}
     </div>
   );
 }

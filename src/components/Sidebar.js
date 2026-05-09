@@ -1,14 +1,23 @@
-import React from 'react';
+import React, { useState } from 'react';
 import './Sidebar.css';
 
 function Sidebar() {
-  const suggestedUsers = [
-    { id: 1, name: 'Alex Turner', username: 'alex_turner', avatar: 'https://i.pravatar.cc/150?img=4' },
-    { id: 2, name: 'Jordan Lee', username: 'jordan_lee', avatar: 'https://i.pravatar.cc/150?img=5' },
-    { id: 3, name: 'Chris Park', username: 'chris_park', avatar: 'https://i.pravatar.cc/150?img=6' },
-    { id: 4, name: 'Taylor White', username: 'taylor_white', avatar: 'https://i.pravatar.cc/150?img=7' },
-    { id: 5, name: 'Morgan Stone', username: 'morgan_stone', avatar: 'https://i.pravatar.cc/150?img=8' }
-  ];
+  const [suggestedUsers] = useState([
+    { id: 1, name: 'Alex Turner', username: 'alex_turner', avatar: 'https://i.pravatar.cc/150?img=4', following: false },
+    { id: 2, name: 'Jordan Lee', username: 'jordan_lee', avatar: 'https://i.pravatar.cc/150?img=5', following: false },
+    { id: 3, name: 'Chris Park', username: 'chris_park', avatar: 'https://i.pravatar.cc/150?img=6', following: false },
+    { id: 4, name: 'Taylor White', username: 'taylor_white', avatar: 'https://i.pravatar.cc/150?img=7', following: false },
+    { id: 5, name: 'Morgan Stone', username: 'morgan_stone', avatar: 'https://i.pravatar.cc/150?img=8', following: false }
+  ]);
+
+  const [following, setFollowing] = useState({});
+
+  const toggleFollow = (id) => {
+    setFollowing(prev => ({
+      ...prev,
+      [id]: !prev[id]
+    }));
+  };
 
   return (
     <aside className="sidebar">
@@ -36,7 +45,12 @@ function Sidebar() {
                   <p className="suggestion-label">Suggested for you</p>
                 </div>
               </div>
-              <button className="follow-btn">Follow</button>
+              <button 
+                className={`follow-btn ${following[user.id] ? 'following' : ''}`}
+                onClick={() => toggleFollow(user.id)}
+              >
+                {following[user.id] ? 'Following' : 'Follow'}
+              </button>
             </div>
           ))}
         </div>

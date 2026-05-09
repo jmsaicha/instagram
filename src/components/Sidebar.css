@@ -1,7 +1,7 @@
 .sidebar {
   width: 320px;
   position: sticky;
-  top: 60px;
+  top: 80px;
   height: fit-content;
   padding-top: 20px;
 }
@@ -19,6 +19,7 @@
   height: 56px;
   border-radius: 50%;
   object-fit: cover;
+  cursor: pointer;
 }
 
 .profile-info {
@@ -29,6 +30,7 @@
   font-weight: 600;
   font-size: 14px;
   margin: 0;
+  cursor: pointer;
 }
 
 .profile-fullname {
@@ -88,6 +90,7 @@
   gap: 8px;
   flex: 1;
   min-width: 0;
+  cursor: pointer;
 }
 
 .suggestion-user img {
@@ -125,11 +128,18 @@
   font-size: 12px;
   cursor: pointer;
   white-space: nowrap;
-  transition: color 0.2s;
+  transition: all 0.2s;
+  padding: 6px 16px;
+  border-radius: 4px;
 }
 
 .follow-btn:hover {
-  color: #003d92;
+  background-color: #f0f0f0;
+}
+
+.follow-btn.following {
+  color: #262626;
+  border: 1px solid #dbdbdb;
 }
 
 .sidebar-footer {
@@ -145,6 +155,7 @@
   color: #737373;
   text-decoration: none;
   transition: color 0.2s;
+  cursor: pointer;
 }
 
 .sidebar-footer a:hover {
@@ -154,6 +165,12 @@
 .sidebar-footer p {
   width: 100%;
   margin-top: 8px;
+}
+
+@media (max-width: 1280px) {
+  .sidebar {
+    width: 280px;
+  }
 }
 
 @media (max-width: 1024px) {

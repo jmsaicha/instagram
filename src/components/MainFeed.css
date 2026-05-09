@@ -1,0 +1,14 @@
+.main-feed {
+  flex: 1;
+  min-width: 0;
+}
+
+.feed-container {
+  max-width: 470px;
+}
+
+@media (max-width: 768px) {
+  .feed-container {
+    max-width: 100%;
+  }
+}

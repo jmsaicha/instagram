@@ -1,0 +1,112 @@
+.stories-container {
+  background-color: #fff;
+  border: 1px solid #dbdbdb;
+  border-radius: 8px;
+  padding: 12px;
+  margin-bottom: 24px;
+  overflow-x: auto;
+}
+
+.stories-wrapper {
+  display: flex;
+  gap: 12px;
+  overflow-x: auto;
+  scroll-behavior: smooth;
+}
+
+.stories-wrapper::-webkit-scrollbar {
+  height: 4px;
+}
+
+.stories-wrapper::-webkit-scrollbar-thumb {
+  background-color: #dbdbdb;
+  border-radius: 2px;
+}
+
+.story-item {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 8px;
+  cursor: pointer;
+  min-width: 80px;
+  text-align: center;
+}
+
+.story-avatar-wrapper {
+  position: relative;
+  width: 60px;
+  height: 60px;
+  border-radius: 50%;
+  overflow: hidden;
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  padding: 2px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.story-avatar-wrapper.has-story {
+  background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);
+}
+
+.story-avatar-wrapper.has-story::before {
+  content: '';
+  position: absolute;
+  inset: -2px;
+  background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);
+  border-radius: 50%;
+  z-index: -1;
+}
+
+.story-avatar-wrapper img {
+  width: 56px;
+  height: 56px;
+  border-radius: 50%;
+  object-fit: cover;
+  border: 2px solid #fff;
+}
+
+.story-item.your-story .story-avatar-wrapper {
+  background: none;
+  border: 2px solid #dbdbdb;
+}
+
+.add-story-btn {
+  position: absolute;
+  bottom: 0;
+  right: 0;
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
+  background-color: #0095f6;
+  color: #fff;
+  border: 2px solid #fff;
+  cursor: pointer;
+  font-size: 12px;
+  font-weight: bold;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.story-item p {
+  font-size: 12px;
+  margin: 0;
+  color: #262626;
+  word-break: break-word;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  width: 60px;
+}
+
+@media (max-width: 768px) {
+  .stories-container {
+    margin-bottom: 12px;
+  }
+
+  .story-item p {
+    font-size: 11px;
+  }
+}
