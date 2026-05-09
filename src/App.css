@@ -1,38 +1,29 @@
-.app {
+.app.mobile-app {
   min-height: 100vh;
-  background-color: #fafafa;
+  background-color: #000;
+  color: #fff;
+  display: flex;
+  flex-direction: column;
+  padding-bottom: 60px;
 }
 
 .app-content {
+  flex: 1;
+  overflow-y: auto;
   padding-top: 60px;
 }
 
-.main-container {
-  display: flex;
-  max-width: 1400px;
-  margin: 0 auto;
-  gap: 30px;
-  padding: 20px;
-}
-
-.feed-section {
-  flex: 1;
-  min-width: 0;
-}
-
-@media (max-width: 1024px) {
-  .main-container {
-    flex-direction: column;
-    gap: 20px;
-  }
+.mobile-feed {
+  background-color: #000;
+  min-height: 100vh;
 }
 
 @media (max-width: 768px) {
-  .app-content {
-    padding-top: 60px;
+  .app.mobile-app {
+    padding-bottom: 60px;
   }
 
-  .main-container {
-    padding: 10px;
+  .app-content {
+    padding-bottom: 20px;
   }
 }

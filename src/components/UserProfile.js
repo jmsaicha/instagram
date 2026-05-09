@@ -1,6 +1,5 @@
 import React, { useState } from 'react';
-import { FiX, FiMessageCircle, FiMoreHorizontal } from 'react-icons/fi';
-import { FaHeart } from 'react-icons/fa';
+import { FiX } from 'react-icons/fi';
 import './UserProfile.css';
 
 function UserProfile({ user, onClose }) {
@@ -29,9 +28,6 @@ function UserProfile({ user, onClose }) {
             <div className="profile-username-line">
               <h2>{user.username}</h2>
               {user.verified && <span className="verified">✓</span>}
-              <button className="more-options">
-                <FiMoreHorizontal size={20} />
-              </button>
             </div>
             <button 
               className={`follow-button ${isFollowing ? 'following' : ''}`}

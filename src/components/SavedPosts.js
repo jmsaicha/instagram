@@ -12,15 +12,12 @@ function SavedPosts() {
   return (
     <div className="saved-posts-container">
       <div className="saved-header">
-        <h1>Saved</h1>
+        <h2>Saved</h2>
       </div>
       <div className="saved-grid">
         {savedPosts.map(post => (
           <div key={post.id} className="saved-item">
             <img src={post.image} alt={post.title} />
-            <div className="saved-overlay">
-              <p>{post.title}</p>
-            </div>
           </div>
         ))}
       </div>

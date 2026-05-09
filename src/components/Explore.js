@@ -9,25 +9,14 @@ function Explore() {
     { id: 4, image: 'https://images.unsplash.com/photo-1491308056676-205b7c9a7dc1?w=300&h=300&fit=crop', likes: 1560 },
     { id: 5, image: 'https://images.unsplash.com/photo-1483389127117-b6a2102724ae?w=300&h=300&fit=crop', likes: 945 },
     { id: 6, image: 'https://images.unsplash.com/photo-1506794778202-cad84cf45f1d?w=300&h=300&fit=crop', likes: 2340 },
-    { id: 7, image: 'https://images.unsplash.com/photo-1492684223066-81342ee5ff30?w=300&h=300&fit=crop', likes: 1100 },
-    { id: 8, image: 'https://images.unsplash.com/photo-1492684223066-81342ee5ff30?w=300&h=300&fit=crop', likes: 1100 },
   ]);
 
   return (
     <div className="explore-container">
-      <div className="explore-header">
-        <h1>Explore</h1>
-      </div>
       <div className="explore-grid">
         {posts.map(post => (
           <div key={post.id} className="explore-item">
             <img src={post.image} alt="Post" />
-            <div className="explore-overlay">
-              <div className="explore-stats">
-                <span>❤️ {post.likes.toLocaleString()}</span>
-                <span>💬 124</span>
-              </div>
-            </div>
           </div>
         ))}
       </div>

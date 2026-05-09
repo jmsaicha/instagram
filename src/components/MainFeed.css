@@ -1,14 +1,145 @@
-.main-feed {
-  flex: 1;
-  min-width: 0;
+.mobile-feed-container {
+  background-color: #000;
+  padding: 0;
 }
 
-.feed-container {
-  max-width: 470px;
+.mobile-post {
+  background-color: #000;
+  border-bottom: 1px solid #222;
+  padding-bottom: 12px;
+  margin-bottom: 0;
+}
+
+.post-header-mobile {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 12px;
+}
+
+.author-section {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  flex: 1;
+}
+
+.post-avatar {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  object-fit: cover;
+}
+
+.author-info {
+  display: flex;
+  flex-direction: column;
+}
+
+.author-line {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+}
+
+.author-name {
+  font-weight: 600;
+  font-size: 14px;
+  color: #fff;
+}
+
+.verified-badge {
+  color: #0095f6;
+  font-size: 12px;
+}
+
+.post-location {
+  font-size: 12px;
+  color: #a0a0a0;
+}
+
+.more-options {
+  background: none;
+  border: none;
+  color: #fff;
+  font-size: 20px;
+  cursor: pointer;
+  padding: 4px 8px;
+}
+
+.post-image-mobile {
+  width: 100%;
+  aspect-ratio: 1;
+  overflow: hidden;
+  background-color: #111;
+}
+
+.post-image-mobile img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.post-actions-mobile {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 8px 12px;
+}
+
+.action-left {
+  display: flex;
+  gap: 12px;
+}
+
+.action-icon {
+  background: none;
+  border: none;
+  color: #fff;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  padding: 4px;
+  transition: opacity 0.2s;
+}
+
+.action-icon:hover {
+  opacity: 0.7;
+}
+
+.post-stats-mobile {
+  padding: 8px 12px;
+}
+
+.likes-count {
+  font-weight: 600;
+  font-size: 14px;
+  margin: 0 0 4px 0;
+  color: #fff;
+}
+
+.post-caption {
+  font-size: 14px;
+  margin: 0 0 4px 0;
+  color: #fff;
+  line-height: 1.4;
+}
+
+.comments-link {
+  font-size: 13px;
+  color: #a0a0a0;
+  margin: 4px 0;
+  cursor: pointer;
+}
+
+.post-time {
+  font-size: 12px;
+  color: #a0a0a0;
+  margin: 4px 0 0 0;
 }
 
 @media (max-width: 768px) {
-  .feed-container {
-    max-width: 100%;
+  .mobile-post {
+    border-bottom: 1px solid #1a1a1a;
   }
 }

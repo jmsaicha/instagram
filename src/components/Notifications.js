@@ -7,12 +7,13 @@ function Notifications() {
     { id: 2, type: 'comment', user: 'mike_john', avatar: 'https://i.pravatar.cc/150?img=2', action: 'commented on your post', time: '4 hours ago' },
     { id: 3, type: 'follow', user: 'emma_davis', avatar: 'https://i.pravatar.cc/150?img=3', action: 'started following you', time: '1 day ago' },
     { id: 4, type: 'like', user: 'alex_turn', avatar: 'https://i.pravatar.cc/150?img=4', action: 'liked your photo', time: '2 days ago' },
+    { id: 5, type: 'follow', user: 'jordan_l', avatar: 'https://i.pravatar.cc/150?img=5', action: 'started following you', time: '3 days ago' },
   ]);
 
   return (
     <div className="notifications-container">
       <div className="notifications-header">
-        <h1>Notifications</h1>
+        <h2>Activity</h2>
       </div>
       <div className="notifications-list">
         {notifications.map(notif => (

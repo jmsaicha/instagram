@@ -1,16 +1,17 @@
-import React, { useState, useContext } from 'react';
+import React, { useState } from 'react';
+import { FiPlus, FiHeart, FiHome, FiPlay, FiSend, FiSearch, FiUser, FiMenu } from 'react-icons/fi';
+import { BsInstagram } from 'react-icons/bs';
 import './App.css';
 import Header from './components/Header';
-import MainFeed from './components/MainFeed';
-import Sidebar from './components/Sidebar';
 import Stories from './components/Stories';
+import MainFeed from './components/MainFeed';
+import BottomNavigation from './components/BottomNavigation';
 import Modal from './components/Modal';
 import UserProfile from './components/UserProfile';
 import Explore from './components/Explore';
 import Messages from './components/Messages';
 import Notifications from './components/Notifications';
 import SavedPosts from './components/SavedPosts';
-import { AppContext } from './context/AppContext';
 
 function App() {
   const [currentPage, setCurrentPage] = useState('home');
@@ -31,12 +32,9 @@ function App() {
     switch (currentPage) {
       case 'home':
         return (
-          <div className="main-container">
-            <div className="feed-section">
-              <Stories />
-              <MainFeed />
-            </div>
-            <Sidebar />
+          <div className="mobile-feed">
+            <Stories />
+            <MainFeed />
           </div>
         );
       case 'explore':
@@ -68,7 +66,7 @@ function App() {
   };
 
   return (
-    <div className="app">
+    <div className="app mobile-app">
       <Header 
         onCreateClick={handleCreateClick}
         onNavigate={handleNavigate}
@@ -79,6 +77,12 @@ function App() {
       <div className="app-content">
         {renderContent()}
       </div>
+      <BottomNavigation 
+        currentPage={currentPage}
+        onNavigate={handleNavigate}
+        unreadMessages={unreadMessages}
+        unreadNotifications={unreadNotifications}
+      />
       {showModal && <Modal onClose={() => setShowModal(false)} />}
       {showUserProfile && (
         <UserProfile 
